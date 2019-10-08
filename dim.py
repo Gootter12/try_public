@@ -11,6 +11,8 @@ import numpy as np
 
 from keras.datasets import mnist
 
+from picture_edit.ave_smooth import ave_smooth
+
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 img_x, img_y = 28, 28
 x_train = x_train.reshape(x_train.shape[0], img_x, img_y, 1)
