@@ -2,18 +2,19 @@ import cv2
 import numpy as np
 import random
 
-image = cv2.imread('image2.jpg')
-rows, cols = image.shape[:2]
 
-# kern是中值模糊的唯一参数，表示核的边长，要求这个参数为奇数
-kern = 0
-while kern % 2 == 0:
-    kern = random.randint(2, int(cols / 30))
-# kern = int(cols/30)
+def mid_smooth(images):
+    re = []
+    for image in images:
+        rows, cols = image.shape[:2]
 
-cv2.imshow('origin', image)
-dst = cv2.medianBlur(image, kern)
-cv2.imshow("ave", dst)
+        # kern是中值模糊的唯一参数，表示核的边长，要求这个参数为奇数
+        kern = 0
+        while kern % 2 == 0:
+            kern = random.randint(2, int(cols / 30))
+        # kern = int(cols/30)
+        dst = cv2.medianBlur(image, kern)
 
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+        re.append(dst)
+    re = np.array(re)
+    return re

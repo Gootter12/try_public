@@ -9,10 +9,10 @@ def ave_smooth(images):
         rows, cols = image.shape[:2]
 
         # kern是平均模糊的唯一参数，表示核的边长
-        kern = random.randint(2, int(cols / 30))
+        kern = random.randint(2, 3)
         # kern = int(cols/30)
 
         dst = cv2.blur(image, (kern, kern))
         re.append(dst)
-
+    re = np.array(re)
     return re
